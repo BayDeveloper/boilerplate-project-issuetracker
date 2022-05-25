@@ -1,27 +1,14 @@
 'use strict';
 
-module.exports = function (app) {
+const {getIssues, createIssue, updateIssue, deleteIssue, myConn} = require('../models/controller');
 
+module.exports = function (app, myDataBase) {
+  myConn(myDataBase)
   app.route('/api/issues/:project')
-  
-    .get(function (req, res){
-      let project = req.params.project;
-      
-    })
     
-    .post(function (req, res){
-      let project = req.params.project;
-      
-    })
-    
-    .put(function (req, res){
-      let project = req.params.project;
-      
-    })
-    
-    .delete(function (req, res){
-      let project = req.params.project;
-      
-    });
+    .get(getIssues)
+    .post(createIssue)
+    .put(updateIssue)
+    .delete(deleteIssue);
     
 };
